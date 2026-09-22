@@ -14,7 +14,7 @@ Full ML pipeline:
      Metrics: MAE, RMSE, R²
  10. Retrain best model (GBM) on full data for serving
 """
-
+import os
 import warnings
 from pathlib import Path
 
@@ -24,7 +24,6 @@ import requests
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import seaborn as sns
 warnings.filterwarnings("ignore")
 
 from sklearn.preprocessing import LabelEncoder, StandardScaler
@@ -34,14 +33,13 @@ from sklearn.model_selection import cross_val_score
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 from weather import fetch_historical_weather
-from models_training import TF_AVAILABLE
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Configuration
 # ─────────────────────────────────────────────────────────────────────────────
 DATA_PATH       = "restaurant_sales_data.csv"
 CHARTS_DIR      = Path("charts")
-CALENDARIFIC_KEY= "7QxKCPpi2iUcFgvNxbdWelf2AxrnJOyg"
+CALENDARIFIC_KEY= os.environ["CALENDARIFIC_KEY"]
 COUNTRY         = "US"
 TRAINING_YEARS  = [2022, 2023]
 US_WEEKEND_DAYS = [5, 6]

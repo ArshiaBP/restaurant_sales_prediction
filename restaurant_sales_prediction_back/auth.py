@@ -11,10 +11,10 @@ Endpoints:
 After login, pass the token in every protected request:
   Authorization: Bearer <your_token>
 """
-
+import os
 from datetime import datetime, timedelta
 from typing import Optional
-
+from dotenv import load_dotenv
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
@@ -30,7 +30,7 @@ from database import User, get_db
 
 # Change SECRET_KEY before deploying to production.
 # Generate a strong one with: python -c "import secrets; print(secrets.token_hex(32))"
-SECRET_KEY           = "restaurants_sales_prediction"
+SECRET_KEY           = os.environ["SECRET_KEY"]
 ALGORITHM            = "HS256"
 TOKEN_EXPIRE_MINUTES = 60 * 24   # 24 hours
 
