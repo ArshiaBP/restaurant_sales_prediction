@@ -1,0 +1,111 @@
+/* layout.css — AppShell, Sidebar, page header */
+
+/* ── Shell ───────────────────────────────────────────────────────────────── */
+.app-shell {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────────────────── */
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+}
+
+.sidebar-logo {
+  padding: 0 20px 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+.sidebar-logo h1 { font-size: 17px; color: var(--accent); }
+.sidebar-logo p  { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  margin: 2px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  background: none;
+  width: calc(100% - 16px);
+  text-align: left;
+}
+.nav-item:hover  { background: var(--surface2); color: var(--text); }
+.nav-item.active { background: rgba(244,185,66,0.12); color: var(--accent); }
+
+/* ── Sidebar bottom — user info + logout ─────────────────────────────────── */
+.sidebar-bottom {
+  margin-top: auto;
+  padding: 16px 8px 0;
+  border-top: 1px solid var(--border);
+}
+
+.user-chip {
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: var(--radius-sm);
+}
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0c0e12;
+  flex-shrink: 0;
+}
+.user-info { overflow: hidden; }
+.user-name {
+  font-size: 13px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.user-rest {
+  font-size: 11px;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Main content area ───────────────────────────────────────────────────── */
+.main { flex: 1; overflow-y: auto; }
+
+.page-header {
+  padding: 32px 36px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+.page-title { font-size: 26px; color: var(--text); }
+.page-sub   { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+.page-body  { padding: 28px 36px; }
+
+@media (max-width: 900px) {
+  .sidebar { width: 180px; }
+  .page-header, .page-body { padding-left: 20px; padding-right: 20px; }
+}

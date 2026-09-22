@@ -1,0 +1,52 @@
+/* global.css — CSS variables, resets, typography */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg        : #0c0e12;
+  --surface   : #141720;
+  --surface2  : #1c2030;
+  --border    : rgba(255, 255, 255, 0.07);
+  --border2   : rgba(255, 255, 255, 0.13);
+  --text      : #f0f2f8;
+  --muted     : #8892a4;
+  --accent    : #f4b942;
+  --accent2   : #e8834a;
+  --green     : #22c55e;
+  --red       : #ef4444;
+  --blue      : #60a5fa;
+  --purple    : #a78bfa;
+  --radius    : 14px;
+  --radius-sm : 8px;
+}
+
+html, body, #root {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.serif { font-family: 'DM Serif Display', serif; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 10px; }
+
+/* Animations */
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.spin     { animation: spin 1s linear infinite; display: inline-flex; }
+.fade-up  { animation: fadeUp .35s ease both; }
