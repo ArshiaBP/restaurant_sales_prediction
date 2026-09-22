@@ -5,7 +5,7 @@ A project I built to predict daily sales (quantity + revenue) per menu item for 
 ## Data Science Pipeline
 
 - **Load data** — ~203k transaction rows (2022–2023), 26 menu items across 5 categories, loaded from `restaurant_sales_data.csv`.
-- **Clean** — imputed missing items/prices/quantities, removed outliers with IQR, normalized item/category names.
+- **Clean data** — imputed missing items/prices/quantities, removed outliers with IQR, normalized item/category names.
 - **Enrich** — pulled in real historical weather (Open-Meteo) and US public holidays (Calendarific) and merged them into the daily data.
 - **EDA** — monthly revenue trends, top items, revenue by category, sales by day of week, correlation matrix, temperature vs. sales. Charts saved under `charts/eda/`.
 - **Feature engineering** — day of week, month, quarter, weekend/holiday flags, plus lag features (`lag_1`, `lag_7`, `lag_14`) and 7-day rolling mean/std per item.
@@ -24,13 +24,13 @@ All of this runs automatically on backend startup and regenerates the diagnostic
 ## Structure
 
 ```
-restaurant_sales_prediction_back/   # FastAPI app + ML pipeline
-  pipeline.py           # load -> clean -> holidays -> weather -> features
-  models_training.py    # EDA, feature selection, training, charts
+restaurant_sales_prediction_back/
+  pipeline.py            # load -> clean -> add holidays -> add weather -> features
+  models_training.py     # EDA, feature selection, training, charts
   main.py                # API endpoints
-  auth.py / database.py  # JWT auth
+  auth.py                # JWT auth
 
-restaurant_sales_prediction_front/  # React dashboard (predict + metrics pages)
+restaurant_sales_prediction_front/  # React dashboard
 ```
 
 ## Running project
